@@ -15,7 +15,7 @@
     var ROOT = Script.resolvePath('').split(jsMainFileName)[0];
     
     var APP_NAME = "Shapekey Changer"; // <=== REPLACE VALUE (Caption of the Tablet button.)
-    var APP_URL = ROOT + "shapekey_changer.html"; // <=== REPLACE VALUE (html page that will be your UI)
+    var APP_URL = ROOT + "template.html"; // <=== REPLACE VALUE (html page that will be your UI)
     var APP_ICON_INACTIVE = ROOT + "icon_template_inactive.png"; // <=== REPLACE VALUE (Provide a 50 X 50 pixels, .png or .svg file, WHITE on transparent background)
     var APP_ICON_ACTIVE = ROOT + "icon_template_active.png"; // <=== REPLACE VALUE  (Provide a 50 X 50 pixels, .png or .svg file, BLACK on transparent background)
     var appStatus = false;
