@@ -14,12 +14,12 @@
     var jsMainFileName = "app-template.js"; // <=== REPLACE VALUE (File name of this current .js file)
     var ROOT = Script.resolvePath('').split(jsMainFileName)[0];
     
-    var APP_NAME = "TEMPLATE"; // <=== REPLACE VALUE (Caption of the Tablet button.)
-    var APP_URL = ROOT + "template.html"; // <=== REPLACE VALUE (html page that will be your UI)
+    var APP_NAME = "Shapekey Changer"; // <=== REPLACE VALUE (Caption of the Tablet button.)
+    var APP_URL = ROOT + "shapekey_changer.html"; // <=== REPLACE VALUE (html page that will be your UI)
     var APP_ICON_INACTIVE = ROOT + "icon_template_inactive.png"; // <=== REPLACE VALUE (Provide a 50 X 50 pixels, .png or .svg file, WHITE on transparent background)
     var APP_ICON_ACTIVE = ROOT + "icon_template_active.png"; // <=== REPLACE VALUE  (Provide a 50 X 50 pixels, .png or .svg file, BLACK on transparent background)
     var appStatus = false;
-    var channel = "overte.application.more.template"; // <=== REPLACE VALUE  (This must be a string specific to this application for a private communication between the app and its UI(html). The value must the same in template.html too.)
+    var channel = "overte.application.more.blendshape_changer"; // <=== REPLACE VALUE  (This must be a string specific to this application for a private communication between the app and its UI(html). The value must the same in template.html too.)
     var timestamp = 0;
     var INTERCALL_DELAY = 200; //0.3 sec
     
@@ -69,10 +69,31 @@
                 } else if (instruction.action === "SELF_UNINSTALL" && (n - timestamp) > INTERCALL_DELAY) { //<== This is a good practice to add a "Uninstall this app" button for rarely used app. (toolbar has a limit in size) 
                     d = new Date();
                     timestamp = d.getTime();
-                    ScriptDiscoveryService.stopScript(Script.resolvePath(''), false);
+                    ScriptDiscoveryService.stopScript(Script.resolvePath(''), false);   
+                } else if (instruction.action === "SELF_SET_BLENDSHAPE"){
+                    
+                    MyAvatar.hasScriptedBlendshapes = true;
+                    
+                    MyAvatar.setBlendshape(instruction.data.blendshape.name,  instruction.data.blendshape.value);
+                    console.log(instruction.data.blendshape.name+" was changed to " + instruction.data.blendshape.value.toString());
+                    
+                    //Script.setTimeout(function () {
+                    //    MyAvatar.hasScriptedBlendshapes = false;
+                    //}, 10000);
+                    
                 }
             }
         }
+    }
+    
+     function sendToWeb(command, data) {
+        var dataToSend = {
+            "app": "inventory",
+            "command": command,
+            "data": data
+        };
+        
+        tablet.emitScriptEvent(JSON.stringify(dataToSend));
     }
 
     //============ Add your application functions here ==================
