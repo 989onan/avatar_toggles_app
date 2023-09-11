@@ -15,7 +15,7 @@
     <head>
         <meta charset="UTF-8">
         <script>
-            var channel = "overte.application.more.blendshape_changer";
+            var channel = "overte.application.more.avatar_manager";
             
             //Parameters (if you have transfered data using the get parameter in the url of the UI (html)
             var myParameter = findGetParameter("parameter");
@@ -23,7 +23,7 @@
             //var myNumericParameter = parseInt(myParameter, 10); //Add this if the parameter is a number value (parseInt or parseFloat)
 
             //Paths
-            var thisPageName = "template.html"; //<========= REPLACE VALUE        
+            var thisPageName = "avatar_toggles.html"; //<========= REPLACE VALUE        
             var currentPath = window.location.protocol + "//" + window.location.host + window.location.pathname;
             var ROOTPATH = currentPath.replace(thisPageName, ""); //<=== Could be useful
 
@@ -114,21 +114,28 @@
         <div style="text-align: right; width:100%;">
             <button id="uninstall" onClick = "uninstall();">Uninstall this app</button>
         </div>
-        
-        
-        
-        <div>
-            <button id="reloadbutton" onClick="reloadBlendshapes();">Reload Blendshapes</button>
+        <div id="toolbar">
+            <button id="blendshapes_tab_button" onClick="switchPage('blendshapes_page');"> Blendshapes </button>
             
-            <p>shapekeys</p>
-            <div id="blendshapes_list">
+            
+            
+        </div>
+        
+        <div id="page_content">
+            <div id="blendshapes_page">
+                <button id="reloadbutton" onClick="reloadBlendshapes();">Reload Blendshapes</button>
+                
+                <p>shapekeys</p>
+                <div id="blendshapes_list">
+                
+                
+                </div>
+                
             
             
             </div>
-            
-        
-        
         </div>
+        
         <script>
             //UI functions here
             // from: https://github.com/overte-org/overte-docs-sphinx/blob/master/source/_static/resources/script/flow/flowAppCpp/flowAppCpp.html
@@ -142,6 +149,14 @@
                     input.attr("checked", "checked");
                 }
                 return input;
+            }
+            
+            
+            function switchPage(page_id){
+                
+                
+                
+                
             }
             
             

@@ -11,7 +11,7 @@
 //  See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
 //
 (function() {
-    var jsMainFileName = "app-template.js"; // <=== REPLACE VALUE (File name of this current .js file)
+    var jsMainFileName = "app-avatar-toggles.js"; // <=== REPLACE VALUE (File name of this current .js file)
     var ROOT = Script.resolvePath('').split(jsMainFileName)[0];
     
     var APP_NAME = "Shapekey Changer"; // <=== REPLACE VALUE (Caption of the Tablet button.)
@@ -19,7 +19,7 @@
     var APP_ICON_INACTIVE = ROOT + "icon_template_inactive.png"; // <=== REPLACE VALUE (Provide a 50 X 50 pixels, .png or .svg file, WHITE on transparent background)
     var APP_ICON_ACTIVE = ROOT + "icon_template_active.png"; // <=== REPLACE VALUE  (Provide a 50 X 50 pixels, .png or .svg file, BLACK on transparent background)
     var appStatus = false;
-    var channel = "overte.application.more.blendshape_changer"; // <=== REPLACE VALUE  (This must be a string specific to this application for a private communication between the app and its UI(html). The value must the same in template.html too.)
+    var channel = "overte.application.more.avatar_manager"; // <=== REPLACE VALUE  (This must be a string specific to this application for a private communication between the app and its UI(html). The value must the same in template.html too.)
     var timestamp = 0;
     var INTERCALL_DELAY = 200; //0.3 sec
     
@@ -88,7 +88,7 @@
     
      function sendToWeb(command, data) {
         var dataToSend = {
-            "app": "inventory",
+            "app": "avtar_toggles",
             "command": command,
             "data": data
         };
